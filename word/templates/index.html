@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+</head>
+<body>
+    <!-- dictionary start here -->
+
+    <div class="container">
+        <div class="left-sm-3">
+            <p>Sunil Dictionary</p>
+            <div class="img-sm-book">
+
+                <img src="{% static 'dict.jpg' %}" alt="">
+            </div>
+
+            <div class="about-text-sm-12">
+                <p>
+                    Linus Dictionary is a website where you can find synonyms and antonym of any words.
+                </p>
+
+            <ul>
+                <li><a href="{% url 'word:home' %}">Home</a> </li>
+            </ul>
+            </div>
+
+        </div>
+        <div class="right-sm-9">
+
+            <!-- search section start -->
+            <div class="search-sm-12">
+                <p class="topic"> Sunil Dictionary</p>
+                <p class="search-topic">Search your word here.</p>
+                <form action="{% url 'word:search' %}">
+                    {% comment %} {% csrf_token %} {% endcomment %}
+                <div class="search">
+                    <input type="search" placeholder="Enter your word" name="search">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+            </div>
+
+
+            <!-- result-section start here -->
+            {% if search %}
+            <div class="result-sm-12">
+                <h1>{{search}}</h1>
+                <p class="result"><b>Meaning:</b><span> {{meaning}} </span></p>
+                <p class="result"><b>Synonyms:</b><span>{{synonyms}}</span></p>
+                <p class="result"><b>Antonyms:</b><span>{{antonyms}}</span></p>
+
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <!-- dictionary end here -->
+
+    <!-- <div class="footer-sn-12">
+        <p>@copyright </p>
+           <p> all right reserved Sunil Nepali</p>
+    </div> -->
+    
+</body>
+</html>
